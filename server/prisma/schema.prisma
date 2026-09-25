@@ -1,0 +1,132 @@
+// Money is stored as integer cents to avoid floating-point rounding errors.
+// Transactions: positive amountCents = money in, negative = money out.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  // Change to "postgresql" for production — see README "Database".
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String            @id @default(cuid())
+  email            String            @unique
+  name             String
+  passwordHash     String
+  createdAt        DateTime          @default(now())
+  transactions     Transaction[]
+  budgets          Budget[]
+  pots             Pot[]
+  bankConnections  BankConnection[]
+  statements       StatementUpload[]
+  dismissedMatches DismissedMatch[]
+}
+
+model Transaction {
+  id            String           @id @default(cuid())
+  userId        String
+  user          User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name          String
+  category      String
+  amountCents   Int
+  date          DateTime
+  recurring     Boolean          @default(false)
+  pending       Boolean          @default(false)
+  // Who a transfer went to (money out) or came from (money in). Required for Transfer transactions.
+  counterparty String?
+  // Manual entries only: paid in cash (so it will never appear on a bank statement)
+  isCash        Boolean          @default(false)
+  // "manual" (typed in), "statement" (from an uploaded bank statement) or "bank" (imported through Mono)
+  source        String           @default("manual")
+  // The bank's original description, kept when a manual entry is merged into an imported one
+  bankNarration String?
+  statementId   String?
+  statement     StatementUpload? @relation(fields: [statementId], references: [id], onDelete: Cascade)
+  // Mono's transaction id, used to avoid importing the same transaction twice
+  externalId    String?
+  connectionId  String?
+  connection    BankConnection?  @relation(fields: [connectionId], references: [id], onDelete: SetNull)
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  @@unique([userId, externalId])
+  @@index([userId, date])
+  @@index([userId, category])
+}
+
+model Budget {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category     String
+  maximumCents Int
+  theme        String
+  createdAt    DateTime @default(now())
+
+  @@unique([userId, category])
+}
+
+model Pot {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name        String
+  targetCents Int
+  totalCents  Int      @default(0)
+  theme       String
+  createdAt   DateTime @default(now())
+}
+
+// One bank account linked through Mono Connect.
+model BankConnection {
+  id              String        @id @default(cuid())
+  userId          String
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  provider        String        @default("mono")
+  // Mono's account id. Useless without our secret key, so stored as-is.
+  accountId       String
+  institutionName String?
+  accountName     String?
+  // Last 4 digits only
+  accountMask     String?
+  lastSyncedAt    DateTime?
+  lastError       String?
+  createdAt       DateTime      @default(now())
+  transactions    Transaction[]
+
+  @@unique([userId, accountId])
+  @@index([accountId])
+}
+
+// One bank statement file uploaded for the monthly report.
+// Deleting it deletes the transactions it imported.
+model StatementUpload {
+  id           String        @id @default(cuid())
+  userId       String
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  // "YYYY-MM": only rows dated in this month are imported
+  month        String
+  bankName     String
+  fileName     String
+  rowsImported Int
+  rowsSkipped  Int           @default(0)
+  createdAt    DateTime      @default(now())
+  transactions Transaction[]
+
+  @@index([userId, month])
+}
+
+// The user said a manual entry and an imported transaction are NOT the same payment.
+model DismissedMatch {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  manualId   String
+  importedId String
+  createdAt  DateTime @default(now())
+
+  @@unique([manualId, importedId])
+}

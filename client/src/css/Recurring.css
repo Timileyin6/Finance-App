@@ -1,0 +1,29 @@
+.recurring-grid { display: grid; grid-template-columns: minmax(260px, 1fr) 2fr; gap: 24px; align-items: start; }
+
+.total-bills { flex-direction: row; align-items: center; gap: 20px; }
+.total-bills > i { font-size: 2rem; }
+
+.summary-list { display: flex; flex-direction: column; margin-top: 12px; }
+.summary-list div { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 0.875rem; }
+.summary-list div:last-child { border-bottom: none; }
+.summary-list dd { font-weight: 700; }
+
+.bills-table { width: 100%; border-collapse: collapse; }
+.bills-table th { text-align: left; font-size: 0.75rem; color: var(--muted); font-weight: 400; padding: 8px 4px; border-bottom: 1px solid var(--line); }
+.bills-table th.right { text-align: right; }
+.bills-table td { padding: 14px 4px; border-bottom: 1px solid var(--line); font-size: 0.875rem; }
+.bills-table tr:last-child td { border-bottom: none; }
+.bill-name { display: flex; align-items: center; gap: 12px; }
+.due { color: var(--accent); white-space: nowrap; }
+.due.paid i { color: var(--accent); }
+.due.due-soon i, .due.overdue i { color: var(--danger); }
+
+@media (max-width: 1000px) {
+  .recurring-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .bills-table thead { display: none; }
+  .bills-table tr { display: grid; grid-template-columns: 1fr auto; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .bills-table td { border: none; padding: 2px 0; }
+  .bills-table td:first-child { grid-column: 1 / -1; }
+}

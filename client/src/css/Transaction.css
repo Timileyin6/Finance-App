@@ -1,0 +1,21 @@
+.tx-row {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  width: 100%; padding: 14px 4px; border-bottom: 1px solid var(--line); text-align: left;
+}
+.tx-row:last-child { border-bottom: none; }
+button.tx-row:hover { background: #faf8f6; }
+
+.tx-who { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.tx-name { font-weight: 700; font-size: 0.9rem; overflow: hidden; text-overflow: ellipsis; }
+.tx-flag { font-size: 0.7rem; color: var(--muted); margin-left: 6px; }
+.tx-sub { font-size: 0.78rem; color: var(--muted); }
+.tx-right { text-align: right; flex-shrink: 0; }
+.tx-amount { font-weight: 700; font-size: 0.9rem; }
+.tx-amount.positive { color: var(--accent); }
+
+.avatar {
+  width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0;
+  color: #fff; font-weight: 700; font-size: 0.85rem;
+}
+.tx-missing { color: var(--danger); }
+.tx-missing i { font-size: 0.7rem; }

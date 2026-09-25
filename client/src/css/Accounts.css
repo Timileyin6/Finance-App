@@ -1,0 +1,15 @@
+.notice { display: flex; gap: 20px; align-items: flex-start; }
+.notice > i { font-size: 1.8rem; color: var(--muted); margin-top: 4px; }
+.notice h2 { margin-bottom: 6px; }
+.sandbox-hint { margin-top: -12px; }
+.flash { padding: 14px 20px; }
+
+.bank-list { list-style: none; margin-top: 12px; }
+.bank-row {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  padding: 16px 0; border-bottom: 1px solid var(--line);
+}
+.bank-row:last-child { border-bottom: none; }
+.bank-info { display: flex; gap: 16px; align-items: center; }
+.bank-info > i { font-size: 1.4rem; background: var(--bg); padding: 12px; border-radius: 50%; }
+.bank-actions { display: flex; gap: 8px; }

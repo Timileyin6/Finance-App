@@ -1,0 +1,26 @@
+.overview-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: start; }
+
+.section-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+
+.pots-body { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; }
+.total-saved {
+  display: flex; align-items: center; gap: 18px; background: var(--bg); padding: 16px; border-radius: var(--radius);
+}
+.total-saved i { font-size: 2.2rem; color: var(--accent); }
+.total-saved h2 { font-size: 2rem; }
+.legend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.budget-body { display: flex; align-items: center; gap: 20px; }
+
+.bills-summary { display: flex; flex-direction: column; gap: 12px; }
+.bill-tile {
+  display: flex; justify-content: space-between; align-items: center; background: var(--bg);
+  padding: 18px 16px; border-radius: 8px; border-left: 4px solid var(--bar);
+}
+
+@media (max-width: 1100px) {
+  .overview-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .pots-body, .budget-body { grid-template-columns: 1fr; display: grid; }
+}

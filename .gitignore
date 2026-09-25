@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Server secrets and local database
+.env
+server/prisma/*.db
+server/prisma/*.db-journal
