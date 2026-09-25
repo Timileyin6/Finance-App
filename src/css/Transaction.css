@@ -1,0 +1,27 @@
+.container2{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+} 
+ 
+.image{
+    display: flex;
+}
+
+.text{
+    font-size: 14px;
+}
+
+.date{
+    font-size: 12px;
+    color: gray;
+}
+
+.line{
+    padding: 7.5px 0;
+    border-bottom: 1px solid lightgray;
+}
+
+.line:last-child{
+    border-bottom: none;
+}

@@ -1,0 +1,11 @@
+.package{
+    background-color: hsl(13, 31%, 94%);
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-radius: 7px;
+}
+
+.bills{ 
+    font-weight: bold;
+}

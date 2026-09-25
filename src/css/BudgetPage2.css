@@ -1,0 +1,7 @@
+.createNewBudget{
+    background: black;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px;
+}

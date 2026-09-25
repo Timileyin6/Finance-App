@@ -1,0 +1,14 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  
+  color-scheme: light dark;
+  color: hsl(14, 65%, 9%);
+  background-color:  hsl(13, 31%, 94%)  ;
+}
+
+*{
+  padding: 0%;
+  margin: 0;
+  border: none;
+}
+

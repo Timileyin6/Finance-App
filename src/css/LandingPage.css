@@ -1,0 +1,119 @@
+*{
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+.main{
+  grid-template-columns: 240px 1fr;
+}
+
+.height{
+  display: grid;
+  height: 100vh;
+}
+
+.mainContent{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.fullContent{
+  width: 100%;
+}
+
+.topMetrics{
+  display: flex;
+  gap: 20px;
+}
+
+.amount{
+  flex: 1;
+  border: 1px solid white;
+  background-color: white;
+  padding: 12px;
+  border-radius: 12px;
+  width: 30%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.black{
+  background-color: black;
+  color: white;
+}
+
+.columns{
+  display: grid;
+  grid-template-columns: 60% 1fr;
+  gap: 20px;
+}
+
+.section, .sections{
+  border-radius: 12px;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.section{
+  margin-bottom: 15px;
+}
+
+.heads{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 9px;
+}
+
+.seeMore{
+  color: gray;
+  font-size: small;
+}
+
+.pots .bodys{
+  display: flex;
+  gap: 24px;
+}
+
+.cat{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.total-saved{
+  display: flex;
+  background-color:  hsl(13, 31%, 94%)  ;
+  width: 40%;
+  padding: 7px;
+  border-radius: 12px;
+  justify-content: left;
+  align-items: center;
+  gap: 20px;
+}
+
+i{
+  font-size: 48px;
+}
+
+.budgetBodys{
+  display: flex;
+}
+
+.budgetCat{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bodysRecur{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.grey{
+  color: gray;
+}

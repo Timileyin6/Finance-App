@@ -1,0 +1,91 @@
+/* Hide scrollbar but keep scrolling */
+.hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
+.transContainer{
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.transMain{
+    padding: 15px;
+}
+
+.transHeader{
+    margin-bottom: 10px;
+}
+
+.transMetrics{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.build{
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.transMetric{
+    width: 35%;
+}
+
+.topBar{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 7px;
+}
+
+.searchBar{
+    background-color: white;
+    border: 1px solid lightgray;
+    width: 80%;
+    padding: 5px;
+    height: 30px;
+    border-radius: 7px;
+}
+
+.searchInput{
+    background-color: white;
+    width: 90%;
+    height: 100%;
+    border: none;
+    color: black;
+    margin-right: 5px;
+}
+
+.searchInput:focus{
+    border: none;
+    outline: none;
+}
+
+.transColumn{
+    overflow-y: auto;
+    height: 400px;
+    padding: 10px;
+}
+
+.bigColumns{
+    display: grid;
+    grid-template-columns: 60% 1fr;
+    gap: 15px;
+}
+
+.transBudget1 {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.section1{
+    display: flex;
+    flex-direction: column;
+}
